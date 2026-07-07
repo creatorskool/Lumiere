@@ -8,10 +8,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 <style>
-/* === EXACT CSS FROM YOUR LATEST DUSTY VERSION === */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: #0F0F10; overflow-x: hidden; }
 body { color: #F6F6F6; font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+
+/* ══════════════════════════════════════════════
+   BASE = PORTRAIT MOBILE (narrow)
+══════════════════════════════════════════════ */
 
 .cover {
   min-height: 100svh;
@@ -96,35 +99,139 @@ h2 {
   font-weight: 700; color: #F6F6F6; letter-spacing: -0.025em; line-height: 1.15;
   margin: 0 0 22px; border-left: 3px solid #5B66F8; padding-left: 14px;
 }
+h2.sm { font-size: 20px; margin-bottom: 20px; }
 
 .grid-3  { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .grid-2  { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.grid-2sm { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 24px; }
+.grid-3-mb { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
 
-.table-scroll { border-radius: 8px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); }
-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-th { padding: 10px; text-align: left; font-weight: 600; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(91,102,248,0.95); }
-td { padding: 11px 10px; border-right: 1px solid rgba(255,255,255,0.06); }
+.table-scroll { border-radius: 8px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-family: 'DM Sans', sans-serif; font-size: 12px; }
+thead tr { background: #171753; }
+th {
+  padding: 10px 10px; text-align: left; font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(91,102,248,0.95); border-right: 1px solid rgba(255,255,255,0.08);
+}
+th:last-child { border-right: none; }
+td { padding: 11px 10px; border-right: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+td:last-child { border-right: none; }
+tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+tr:last-child { border-bottom: none; }
 .tr-alt { background: rgba(255,255,255,0.016); }
+.tr-total { background: #171753; }
 
 .chart-wrap {
   background: rgba(23,23,83,0.22); border: 1px solid rgba(91,102,248,0.14);
   border-radius: 10px; padding: 12px 8px 4px; margin-bottom: 24px;
 }
 canvas { width: 100% !important; display: block; }
+#revenueCanvas { height: 200px; }
+#organicCanvas { height: 200px; }
+#proofCanvas   { height: 180px; }
 
-@media (min-width: 768px) {
-  .cover { padding: 72px 40px; }
-  .cover-title { font-size: clamp(44px, 6.5vw, 84px); }
-  .cover-metrics { flex-direction: row; max-width: none; }
-  .cover-metric { flex: 1; padding: 24px 40px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: none; }
+.pill-label {
+  font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: #5B66F8; margin: 0 0 10px;
+}
+.text-cyan    { color: #5FD7FC; }
+.text-violet  { color: #5B66F8; }
+.text-magenta { color: #F366FC; }
+.fw7 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+
+.grid-meta-2   { grid-template-columns: 1fr !important; }
+.tranche-grid  { grid-template-columns: 1fr !important; }
+.legal-grid    { grid-template-columns: 1fr !important; }
+.case-row      { grid-template-columns: 1fr !important; }
+.case-label    { padding: 14px !important; }
+.conversion-seq { flex-wrap: wrap; }
+.conv-cell     { flex: 0 0 50%; min-width: 0; min-height: 72px; }
+.conversion-arrow { display: none !important; }
+.conversion-seq > div:nth-child(5),
+.conversion-seq > div:nth-child(7) { border-top: 1px solid rgba(255,255,255,0.08) !important; }
+.conversion-seq > div:nth-child(5) { border-left: none !important; }
+
+@media (min-width: 768px), (orientation: landscape) and (min-width: 560px) {
+  .cover { padding: 72px 40px; min-height: 100vh; }
+  .cover-eyebrow { font-size: 12px; letter-spacing: 0.32em; margin-bottom: 40px; }
+  .cover-title { font-size: clamp(44px, 6.5vw, 84px); margin-bottom: 32px; }
+  .cover-rule { width: 52px; margin-bottom: 32px; }
+  .cover-prepared { font-size: 13px; margin-bottom: 10px; }
+  .cover-name { font-size: clamp(20px, 3vw, 28px); margin-bottom: 52px; }
+  .cover-metrics { flex-direction: row; max-width: none; width: auto; margin-bottom: 56px; }
+  .cover-metric {
+    flex: 1; padding: 24px 40px !important;
+    border-right: 1px solid rgba(255,255,255,0.1) !important; border-bottom: none !important;
+  }
+  .cover-metric:last-child { border-right: none !important; }
+  .cover-metric-value { font-size: clamp(28px, 4vw, 38px); }
+  .cover-meta {
+    flex-direction: row; gap: 40px; justify-content: center;
+    padding-top: 28px; max-width: 720px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .cover-meta-item { padding: 0; border-bottom: none; text-align: center; }
+  .cover-meta-item span:first-child { font-size: 10px; }
+  .cover-meta-item span:last-child  { font-size: 14px; }
+
   .main { padding: 0 48px 100px; }
   section { padding: 60px 0 52px; }
-  h2 { font-size: clamp(26px, 4vw, 38px); }
-  .grid-3 { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-  .grid-2 { grid-template-columns: 1fr 1fr; gap: 18px; }
+  .sec-counter { margin-bottom: 36px; }
+  h2    { font-size: clamp(26px, 4vw, 38px); margin-bottom: 36px; padding-left: 20px; }
+  h2.sm { font-size: clamp(22px, 3vw, 32px); margin-bottom: 32px; }
+
+  .grid-3   { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-2   { grid-template-columns: 1fr 1fr;     gap: 18px; }
+  .grid-2sm { grid-template-columns: 1fr 1fr;     gap: 16px; margin-bottom: 32px; }
+  .grid-3-mb { grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+  .tranche-grid  { grid-template-columns: 1fr 1fr 1fr !important; }
+  .legal-grid    { grid-template-columns: 1fr 1fr !important; }
+  .grid-meta-2   { grid-template-columns: 1fr 1fr !important; }
+  .case-row      { grid-template-columns: 130px 1fr !important; }
+  .case-label    { padding: 20px 16px !important; }
+
+  .conversion-seq  { flex-wrap: nowrap !important; }
+  .conv-cell { flex: 1 !important; }
+  .conversion-seq > div:nth-child(5) { border-left: 1px solid rgba(255,255,255,0.06) !important; border-top: none !important; }
+  .conversion-seq > div:nth-child(7) { border-top: none !important; }
+  .conversion-arrow {
+    display: flex !important; flex: 0 0 32px !important;
+    align-items: center !important; justify-content: center !important;
+    border-left: none !important;
+  }
+
   table { font-size: 13px; }
-  .chart-wrap { padding: 16px 12px 6px; }
-  #revenueCanvas, #organicCanvas { height: 280px; }
+  th    { font-size: 9px; padding: 12px 14px; }
+  td    { padding: 14px 14px; }
+  .table-scroll table { min-width: 0 !important; }
+  .table-scroll { overflow-x: visible; }
+
+  .chart-wrap { padding: 16px 12px 6px; margin-bottom: 24px; }
+  #revenueCanvas { height: 280px; }
+  #organicCanvas { height: 280px; }
+  #proofCanvas   { height: 260px; }
+}
+
+@media (min-width: 900px) {
+  .main { padding: 0 64px 140px; }
+  section { padding: 88px 0 72px; }
+  .sec-counter { margin-bottom: 44px; }
+  h2    { font-size: clamp(26px, 4vw, 38px); margin-bottom: 44px; padding-left: 22px; }
+  h2.sm { font-size: clamp(22px, 3vw, 32px); margin-bottom: 40px; }
+  .grid-3   { gap: 20px; }
+  .grid-2   { gap: 22px; }
+  .grid-2sm { gap: 18px; margin-bottom: 40px; }
+  .grid-3-mb { gap: 16px; margin-bottom: 28px; }
+  .case-row  { grid-template-columns: 148px 1fr !important; }
+  .case-label { padding: 24px 18px !important; }
+  .cover { padding: 80px 40px; }
+  .cover-metric { padding: 28px 48px !important; }
+  .cover-name { margin-bottom: 60px; }
+  .cover-meta { gap: 56px; }
+  #revenueCanvas { height: 320px; }
+  #organicCanvas { height: 320px; }
+  #proofCanvas   { height: 300px; }
 }
 </style>
 </head>
@@ -136,8 +243,7 @@ canvas { width: 100% !important; display: block; }
   <h1 class="cover-title">Profit Participation<br>Opportunity</h1>
   <div class="cover-rule"></div>
   <p class="cover-prepared">Prepared for</p>
-  <p class="cover-name">Lumiere Investments<br>Steve &amp; Brandyn’s Holding Company</p>
-
+  <p class="cover-name">Lumiere Investments / Steve and Brandyn’s Holding Company</p>
   <div class="cover-metrics">
     <div class="cover-metric">
       <p class="cover-metric-value text-cyan">$20,000</p>
@@ -145,14 +251,13 @@ canvas { width: 100% !important; display: block; }
     </div>
     <div class="cover-metric">
       <p class="cover-metric-value text-violet">5%</p>
-      <p class="cover-metric-label">Contractual Profit Participation</p>
+      <p class="cover-metric-label">Profit Participation</p>
     </div>
     <div class="cover-metric">
-      <p class="cover-metric-value text-magenta">Contractual</p>
-      <p class="cover-metric-label">No Equity</p>
+      <p class="cover-metric-value text-magenta">$625K</p>
+      <p class="cover-metric-label">Post-Money Valuation</p>
     </div>
   </div>
-
   <div class="cover-meta">
     <div class="cover-meta-item"><span>Founder</span><span>Lazarus Ross</span></div>
     <div class="cover-meta-item"><span>Advisor &amp; Analyst</span><span>Stephen Byrkit, Lumiere Investments</span></div>
@@ -164,28 +269,107 @@ canvas { width: 100% !important; display: block; }
 
 <div class="main">
 
-  <!-- 01 EXECUTIVE SUMMARY -->
+  <!-- 01 · EXECUTIVE SUMMARY -->
   <section>
     <div class="sec-counter"><span class="sec-num">01</span><div class="sec-line"></div></div>
     <h2>EXECUTIVE SUMMARY</h2>
+
     <div style="background:rgba(91,102,248,0.07); border:1px solid rgba(91,102,248,0.18); border-radius:10px; padding:36px 44px; margin-bottom:40px;">
       <h3 style="font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; color:#F6F6F6; margin:0 0 16px;">The Problem with High Performance</h3>
+      <p style="font-size:16px; color:rgba(246,246,246,0.82); line-height:1.78; margin:0 0 14px;">Countless high-performers focus on changing their tactics while leaving the structures creating their results untouched.</p>
       <p style="font-size:16px; color:rgba(246,246,246,0.82); line-height:1.78; margin:0;">Creator Skool develops both the tactics and the internal architecture required to execute them consistently.</p>
+    </div>
+
+    <div class="grid-3">
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-top:2px solid #5B66F8; border-radius:0 0 8px 8px; padding:28px 24px;">
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:600; color:#5FD7FC; margin:0 0 13px; line-height:1.35;">The Limit to Scale:</p>
+        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.72; margin:0;">Growth eventually exposes the limits of the structures that created previous success. What got someone where they are rarely sustains where they are choosing to go next.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-top:2px solid #5B66F8; border-radius:0 0 8px 8px; padding:28px 24px;">
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:600; color:#5FD7FC; margin:0 0 13px; line-height:1.35;">Internal Architecture Installation:</p>
+        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.72; margin:0;">Creator Skool is where high-performers learn to deconstruct and upgrade the physical, psychological, and emotional software creating their results.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-top:2px solid #5B66F8; border-radius:0 0 8px 8px; padding:28px 24px;">
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:600; color:#5FD7FC; margin:0 0 13px; line-height:1.35;">Holistic Integration:</p>
+        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.72; margin:0;">Building the version of the human being capable of sustaining success across physique, health, energy, relationships, and life from the inside out.</p>
+      </div>
     </div>
   </section>
 
   <!-- INVESTMENT STRUCTURE -->
   <section style="padding:56px 0;">
     <div style="background:linear-gradient(135deg,rgba(74,28,164,0.38) 0%,rgba(23,23,83,0.55) 100%); border:1px solid rgba(91,102,248,0.28); border-radius:10px; padding:36px 44px;">
-      <h3 style="font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; color:#F6F6F6; margin:0 0 14px;">Investment Structure &amp; Profit Participation</h3>
-      <p style="font-size:16px; color:rgba(246,246,246,0.86); line-height:1.8; margin:0;">
-        <strong>$20,000</strong> for a <strong>contractual 5% Profit Participation</strong> in Creator Skool LLC (Texas Operating Company). 
-        This is a contractual economic interest only — no membership interest, ownership units, voting rights, or management rights.
-      </p>
+      <h3 style="font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; color:#F6F6F6; margin:0 0 14px; letter-spacing:-0.01em;">Investment Structure &amp; Profit Participation</h3>
+      <p style="font-size:16px; color:rgba(246,246,246,0.86); line-height:1.8; margin:0;">$20,000 for a <strong style="color:#F6F6F6; font-weight:600;">contractual 5% Profit Participation</strong> in Creator Skool LLC (Texas Operating Company). This grants the investor’s holding company the right to receive 5% of qualifying profits and distributions on a contractual basis, <strong>without granting any membership interest, ownership units, voting rights, management rights, or other member privileges</strong> under the LLC Operating Agreement.</p>
     </div>
   </section>
 
-  <!-- 03 USE OF FUNDS -->
+  <!-- Relationship Transition -->
+  <section>
+    <div class="sec-counter"><span class="sec-num"></span><div class="sec-line"></div></div>
+    <h2 class="sm">Relationship Transition &amp; Ongoing Advisory</h2>
+    <p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.75; margin:0 0 18px;">This investment represents a strategic transition. The $20,000 capital injection buys out Lazarus Ross’s existing 12% interest in Lumiere Investments. In exchange, Steve and Brandyn (through their holding company) receive a 5% contractual profit participation in Creator Skool.</p>
+    <p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.75; margin:0;">This transaction includes an ongoing advisory relationship with Steve and Brandyn to serve as trusted advisors to Creator Skool, providing financial guidance, strategic input on growth initiatives, and support in scaling the business. Their expertise remains available on an as-needed basis.</p>
+  </section>
+
+  <!-- 02 · THE MACRO MARKET OPPORTUNITY -->
+  <section>
+    <div class="sec-counter"><span class="sec-num">02</span><div class="sec-line"></div></div>
+    <h2>The Macro Market Opportunity</h2>
+
+    <div class="grid-3" style="margin-bottom:56px;">
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:32px 26px;">
+        <p class="pill-label">Personal Development</p>
+        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.72; margin:0;">Global market valued at $56.22 Billion in 2026. Personal coaching, mental wellness optimization, and individual training command the absolute largest single market share.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:32px 26px;">
+        <p class="pill-label">Executive Development</p>
+        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.72; margin:0;">Leadership and performance consulting industry has reached $112.98 Billion in 2026. Entrepreneurs and operators are accelerating coaching spend at a robust 11.17% CAGR.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:32px 26px;">
+        <p class="pill-label">Premium Calibration</p>
+        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.72; margin:0;">Rising professional burnout and relational decay drive massive demand. Elite founders and HNIs routinely pay $25,000 to $75,000 per engagement for bespoke identity alignment.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:600; color:#F6F6F6; margin:0 0 22px; border-left:3px solid #5FD7FC; padding-left:16px;">High-Margin Offer Architecture</h3>
+    <div class="table-scroll">
+      <table style="min-width:600px;">
+        <thead>
+          <tr>
+            <th>Program Container</th>
+            <th style="width:14%;">Investment Level</th>
+            <th>Target Structure &amp; Leverage Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:#F6F6F6; font-weight:500;">VIP CreatorOS Identity Calibration</td>
+            <td style="color:#5FD7FC; font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:700; white-space:nowrap;">$60,000 PIF</td>
+            <td style="color:rgba(246,246,246,0.76); line-height:1.65;">12-Month bespoke personal advisor access for identity calibration and integration. Strictly limited to 8 elite clients per year.</td>
+          </tr>
+          <tr class="tr-alt">
+            <td style="color:#F6F6F6; font-weight:500;">The Integrated Being</td>
+            <td style="color:#5FD7FC; font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:700;">$5,000</td>
+            <td style="color:rgba(246,246,246,0.76); line-height:1.65;">Signature curriculum focusing on core identity restructuring &amp; baseline life alignment of body and relationships.</td>
+          </tr>
+          <tr>
+            <td style="color:#F6F6F6; font-weight:500;">Conscious Relationship Blueprint</td>
+            <td style="color:#5FD7FC; font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:700;">$3,500</td>
+            <td style="color:rgba(246,246,246,0.76); line-height:1.65;">Relational architecture to create relational fulfillment, impacting elite executive focus and business velocity.</td>
+          </tr>
+          <tr class="tr-alt">
+            <td style="color:#F6F6F6; font-weight:500;">G.O.D. Body</td>
+            <td style="color:#5FD7FC; font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:700;">$2,500 – $4,000</td>
+            <td style="color:rgba(246,246,246,0.76); line-height:1.65;">The body recomposition, structural stamina engineering and emotional fluency to create and sustain one's ideal body.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px; color:rgba(246,246,246,0.42); margin:13px 0 0; font-style:italic;">To preserve delivery quality, active foundational enrollment is capped at 25 concurrent members. Scale is built through premium pricing, not manual hours.</p>
+  </section>
+
+  <!-- 03 · GRANULAR $20,000 USE OF FUNDS -->
   <section>
     <div class="sec-counter"><span class="sec-num">03</span><div class="sec-line"></div></div>
     <h2>Granular $20,000 Use of Funds</h2>
@@ -193,101 +377,251 @@ canvas { width: 100% !important; display: block; }
       <table style="min-width:700px; font-size:13px;">
         <thead>
           <tr>
-            <th>Capital Category</th>
-            <th>Allocation</th>
-            <th>Focus</th>
+            <th style="width:22%;">Capital Category</th>
+            <th style="width:12%;">Allocation</th>
+            <th style="width:38%;">Mechanic &amp; Core Partners</th>
+            <th>Direct Revenue Generation Pathway</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Revenue Growth &amp; Messaging</td><td><strong style="color:#5FD7FC;">$5,000 (25%)</strong></td><td>Messaging, AI, conversion</td></tr>
-          <tr class="tr-alt"><td>Systems Scaling</td><td><strong style="color:#5FD7FC;">$1,000 (5%)</strong></td><td>Automation &amp; onboarding</td></tr>
-          <tr><td>Media &amp; Authority Building</td><td><strong style="color:#5FD7FC;">$1,500 (7.5%)</strong></td><td>Content production tools</td></tr>
-          <tr class="tr-alt"><td>Operational Capacity (Vehicle)</td><td><strong style="color:#5FD7FC;">$4,566 (22.83%)</strong></td><td>Travel &amp; in-person events</td></tr>
-          <tr><td>Working Capital &amp; Execution Buffer</td><td><strong style="color:#5FD7FC;">$7,934 (39.67%)</strong></td><td>Runway &amp; execution</td></tr>
-          <tr class="tr-total"><td><strong>TOTAL</strong></td><td><strong style="color:#5FD7FC; font-size:16px;">$20,000</strong></td><td></td></tr>
+          <tr>
+            <td style="color:#F6F6F6; font-weight:600; line-height:1.4;">Revenue Growth &amp; Messaging</td>
+            <td><span style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; color:#5FD7FC; display:block;">$5,000</span><span style="font-size:12px; color:rgba(95,215,252,0.6);">(25%)</span></td>
+            <td style="color:rgba(246,246,246,0.72); line-height:1.65;">Messaging systems, content infrastructure, AI leverage, conversion optimization.</td>
+            <td style="color:rgba(246,246,246,0.72); line-height:1.65;">Builds systematic organic acquisition and premium pipeline velocity.</td>
+          </tr>
+          <tr class="tr-alt">
+            <td style="color:#F6F6F6; font-weight:600; line-height:1.4;">Systems Scaling</td>
+            <td><span style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; color:#5FD7FC; display:block;">$1,000</span><span style="font-size:12px; color:rgba(95,215,252,0.6);">(5%)</span></td>
+            <td style="color:rgba(246,246,246,0.72); line-height:1.65;">Targeted automation and onboarding enhancements.</td>
+            <td style="color:rgba(246,246,246,0.72); line-height:1.65;">Supports efficient operations at current scale.</td>
+          </tr>
+          <tr>
+            <td style="color:#F6F6F6; font-weight:600; line-height:1.4;">Media &amp; Authority Building</td>
+            <td><span style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; color:#5FD7FC; display:block;">$1,500</span><span style="font-size:12px; color:rgba(95,215,252,0.6);">(7.5%)</span></td>
+            <td style="color:rgba(246,246,246,0.72); line-height:1.65;">Laptop + monitors for content production.</td>
+            <td style="color:rgba(246,246,246,0.72); line-height:1.65;">Enables higher-quality long-form assets for trust and inbound.</td>
+          </tr>
+          <tr class="tr-alt">
+            <td style="color:#F6F6F6; font-weight:600; line-height:1.4;">Operational Capacity (Vehicle Repair)</td>
+            <td><span style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; color:#5FD7FC; display:block;">$4,566</span><span style="font-size:12px; color:rgba(95,215,252,0.6);">(22.83%)</span></td>
+            <td style="color:rgba(246,246,246,0.72); line-height:1.65;">Vehicle repair to support travel and in-person client/event meetings.</td>
+            <td style="color:rgba(246,246,246,0.72); line-height:1.65;">Facilitates high-trust relationship development with ideal clients.</td>
+          </tr>
+          <tr>
+            <td style="color:#F6F6F6; font-weight:600; line-height:1.4;">Working Capital &amp; Execution Buffer</td>
+            <td><span style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; color:#5FD7FC; display:block;">$7,934</span><span style="font-size:12px; color:rgba(95,215,252,0.6);">(39.67%)</span></td>
+            <td style="color:rgba(246,246,246,0.72); line-height:1.65;">General runway, continuity, and opportunistic deployment.</td>
+            <td style="color:rgba(246,246,246,0.72); line-height:1.65;">Maintains execution focus during growth phase.</td>
+          </tr>
+          <tr class="tr-total">
+            <td style="color:#F6F6F6; font-weight:700; font-family:'Space Grotesk',sans-serif; letter-spacing:0.05em; border-right:1px solid rgba(255,255,255,0.08);">TOTAL</td>
+            <td style="color:#5FD7FC; font-weight:700; font-family:'Space Grotesk',sans-serif; font-size:16px; border-right:1px solid rgba(255,255,255,0.08);">$20,000</td>
+            <td style="border-right:1px solid rgba(255,255,255,0.08);"></td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
     </div>
+    <p style="font-size:13px; color:rgba(246,246,246,0.42); margin:13px 0 0; font-style:italic;">Transparency Note: All allocations are stated with full clarity. The vehicle repair allocation directly supports in-person client acquisition and event attendance.</p>
   </section>
 
-  <!-- Charts -->
+  <!-- 04 · PIPELINE VELOCITY & ECONOMICS -->
+  <section>
+    <div class="sec-counter"><span class="sec-num">04</span><div class="sec-line"></div></div>
+    <h2>Pipeline Velocity &amp; Economics</h2>
+
+    <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:600; color:rgba(246,246,246,0.9); margin:0 0 12px; letter-spacing:-0.01em;">The Conversion Sequence</h3>
+    <p style="font-size:15px; color:rgba(246,246,246,0.6); margin:0 0 24px; line-height:1.65;">Relationship-driven customer acquisition built on high trust, personal authority, and diagnostic precision:</p>
+
+    <div class="conversion-seq" style="display:flex; align-items:stretch; border:1px solid rgba(91,102,248,0.22); border-radius:8px; overflow:hidden; margin-bottom:44px; background:rgba(23,23,83,0.35);">
+      <div class="conv-cell" style="padding:24px 20px; text-align:center; display:flex; align-items:center; justify-content:center;"><span style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:600; color:#F6F6F6;">Content</span></div>
+      <div class="conversion-arrow" style="color:#5B66F8; font-size:20px;">→</div>
+      <div class="conv-cell" style="padding:24px 20px; text-align:center; border-left:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center;"><span style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:600; color:#F6F6F6;">DM Audit</span></div>
+      <div class="conversion-arrow" style="color:#5B66F8; font-size:20px;">→</div>
+      <div class="conv-cell" style="padding:24px 20px; text-align:center; border-left:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center;"><span style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:600; color:#F6F6F6;">Strategy Session</span></div>
+      <div class="conversion-arrow" style="color:#5B66F8; font-size:20px;">→</div>
+      <div class="conv-cell" style="padding:24px 20px; text-align:center; border-left:1px solid rgba(91,102,248,0.3); background:rgba(91,102,248,0.14); display:flex; align-items:center; justify-content:center;"><span style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:600; color:#5FD7FC;">Premium Close</span></div>
+    </div>
+
+    <div class="grid-2sm">
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:22px 26px;">
+        <p style="font-size:10px; color:rgba(246,246,246,0.38); letter-spacing:0.14em; text-transform:uppercase; margin:0 0 9px; font-family:'Space Grotesk',sans-serif; font-weight:600;">Target Velocity</p>
+        <p style="font-size:15px; color:rgba(246,246,246,0.84); line-height:1.65; margin:0;">2 new premium acquisitions per week (~8 clients/mo)</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:22px 26px;">
+        <p style="font-size:10px; color:rgba(246,246,246,0.38); letter-spacing:0.14em; text-transform:uppercase; margin:0 0 9px; font-family:'Space Grotesk',sans-serif; font-weight:600;">Conservative ACV</p>
+        <p style="font-size:15px; color:rgba(246,246,246,0.84); line-height:1.65; margin:0;">Modeled at a base average of $4,000</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:600; color:rgba(246,246,246,0.9); margin:0 0 18px; letter-spacing:-0.01em;">Cash Flow Run Rates</h3>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 20px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:3px solid rgba(91,102,248,0.6);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px; font-size:15px;">●</span><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;"><strong style="color:#F6F6F6; font-weight:600;">Baseline Run Rate:</strong> 8 clients × $4,000 = <strong style="color:#5FD7FC;">$32,000 / month</strong> gross business volume.</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:16px 20px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:3px solid rgba(91,102,248,0.6);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px; font-size:15px;">●</span><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;"><strong style="color:#F6F6F6; font-weight:600;">The VIP Revenue Upside:</strong> Acquiring just one VIP client per quarter adds <strong style="color:#5FD7FC;">+$60,000 PIF</strong> directly into corporate liquid cash.</p></div>
+    </div>
+  </section>
+
+  <!-- 05 & 06 · ILLUSTRATIVE RETURNS (kept chart structure, updated tables) -->
   <section>
     <div class="sec-counter"><span class="sec-num">05</span><div class="sec-line"></div></div>
-    <h2 style="border-left-color:#4A1CA4;">Organic 6-Month Scaling Projections</h2>
-    <div class="chart-wrap">
-      <canvas id="organicCanvas" height="280"></canvas>
-    </div>
-  </section>
+    <h2>Profit Participation Illustrative Returns (5% Share)</h2>
 
-  <section>
-    <div class="sec-counter"><span class="sec-num">06</span><div class="sec-line"></div></div>
-    <h2>Paid Ads 6-Month Scaling Projections</h2>
-    <div class="chart-wrap">
-      <canvas id="revenueCanvas" height="280"></canvas>
-    </div>
-  </section>
-
-  <!-- 13 RETURNS (5%) -->
-  <section>
-    <div class="sec-counter"><span class="sec-num">13</span><div class="sec-line"></div></div>
-    <h2>Ownership Participation &amp; Illustrative Returns (5% Contractual)</h2>
-
-    <h3>Organic Illustrative Returns (5% Share)</h3>
+    <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:600; color:#F6F6F6; margin:0 0 16px;">Organic Illustrative Returns (5% Share)</h3>
     <div class="table-scroll">
       <table style="min-width:920px; font-size:13px;">
         <thead>
           <tr>
             <th>Annual Revenue</th>
+            <th>Monthly Revenue</th>
+            <th>Founder Salary</th>
+            <th>Staff OpEx</th>
+            <th>Founder Dev &amp; Travel</th>
+            <th>Total OpEx</th>
             <th>EBITDA</th>
-            <th>Distributable Profit</th>
-            <th>5% Share</th>
+            <th>Distributable Profit (after ~25% reserves)</th>
+            <th style="color:#5FD7FC;">5% Annual Share</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>$360,000</td><td>$170,000</td><td>$127,500</td><td>$6,375</td></tr>
-          <tr class="tr-alt"><td>$720,000</td><td>$330,000</td><td>$247,500</td><td>$12,375</td></tr>
-          <tr><td>$1,000,000</td><td>$410,000</td><td>$307,500</td><td>$15,375</td></tr>
-          <tr class="tr-alt"><td>$1,200,000</td><td>$510,000</td><td>$382,500</td><td>$19,125</td></tr>
-          <tr><td>$1,800,000</td><td>$960,000</td><td>$720,000</td><td>$36,000</td></tr>
-          <tr class="tr-alt"><td>$3,000,000</td><td>$1,800,000</td><td>$1,350,000</td><td>$67,500</td></tr>
-          <tr><td>$4,000,000</td><td>$2,570,000</td><td>$1,927,500</td><td>$96,375</td></tr>
-          <tr class="tr-alt"><td>$5,000,000</td><td>$3,340,000+</td><td>$2,505,000+</td><td>$125,250+</td></tr>
+          <tr><td>$360,000</td><td>$30,000</td><td>$180,000</td><td>$0</td><td>$6,000</td><td>$190,000</td><td>$170,000</td><td>$127,500</td><td style="color:#5FD7FC; font-weight:700;">$6,375</td></tr>
+          <tr class="tr-alt"><td>$720,000</td><td>$60,000</td><td>$300,000</td><td>$60,000</td><td>$24,000</td><td>$390,000</td><td>$330,000</td><td>$247,500</td><td style="color:#5FD7FC; font-weight:700;">$12,375</td></tr>
+          <tr><td>$1,000,000</td><td>~$83,000</td><td>$400,000</td><td>$140,000</td><td>$40,000</td><td>$590,000</td><td>$410,000</td><td>$307,500</td><td style="color:#5FD7FC; font-weight:700;">$15,375</td></tr>
+          <tr class="tr-alt"><td>$1,200,000</td><td>$100,000</td><td>$480,000</td><td>$140,000</td><td>$60,000</td><td>$690,000</td><td>$510,000</td><td>$382,500</td><td style="color:#5FD7FC; font-weight:700;">$19,125</td></tr>
+          <tr><td>$1,800,000</td><td>$150,000</td><td>$600,000</td><td>$140,000</td><td>$90,000</td><td>$840,000</td><td>$960,000</td><td>$720,000</td><td style="color:#5FD7FC; font-weight:700;">$36,000</td></tr>
+          <tr class="tr-alt"><td>$3,000,000</td><td>$250,000</td><td>$750,000</td><td>$200,000</td><td>$240,000</td><td>$1,200,000</td><td>$1,800,000</td><td>$1,350,000</td><td style="color:#5FD7FC; font-weight:700;">$67,500</td></tr>
+          <tr><td>$4,000,000</td><td>~$333,000</td><td>$900,000</td><td>$200,000</td><td>$320,000</td><td>$1,430,000</td><td>$2,570,000</td><td>$1,927,500</td><td style="color:#5FD7FC; font-weight:700;">$96,375</td></tr>
+          <tr class="tr-alt"><td>$5,000,000</td><td>~$417,000</td><td>$1,000,000</td><td>$200,000</td><td>$450,000+</td><td>$1,660,000+</td><td>$3,340,000+</td><td>$2,505,000+</td><td style="color:#5FD7FC; font-weight:700;">$125,250+</td></tr>
         </tbody>
       </table>
     </div>
 
-    <h3 style="margin-top:40px;">Paid Ads Illustrative Returns (5% Share)</h3>
+    <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:600; color:#F6F6F6; margin:40px 0 16px;">Paid Ads Illustrative Returns (5% Share)</h3>
     <div class="table-scroll">
-      <table style="min-width:920px; font-size:13px;">
+      <table style="min-width:960px; font-size:13px;">
         <thead>
           <tr>
             <th>Annual Revenue</th>
-            <th>EBITDA</th>
-            <th>Distributable Profit</th>
-            <th>5% Share</th>
+            <th style="text-align:center;">Monthly Revenue</th>
+            <th style="text-align:center;">Founder Salary</th>
+            <th style="text-align:center;">Staff OpEx</th>
+            <th style="text-align:center;">Founder Dev &amp; Travel</th>
+            <th style="text-align:center;">Total OpEx</th>
+            <th style="text-align:center;">EBITDA</th>
+            <th style="text-align:center;">Distributable Profit (after ~25% reserves)</th>
+            <th style="text-align:center; color:#5FD7FC;">5% Annual Share</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>$360,000</td><td>$102,000</td><td>$76,500</td><td>$3,825</td></tr>
-          <tr class="tr-alt"><td>$720,000</td><td>$264,000</td><td>$198,000</td><td>$9,900</td></tr>
-          <tr><td>$1,000,000</td><td>$348,000</td><td>$261,000</td><td>$13,050</td></tr>
-          <tr class="tr-alt"><td>$1,200,000</td><td>$448,000</td><td>$336,000</td><td>$16,800</td></tr>
-          <tr><td>$1,800,000</td><td>$798,000</td><td>$598,500</td><td>$29,925</td></tr>
-          <tr class="tr-alt"><td>$3,000,000</td><td>$1,738,000</td><td>$1,303,500</td><td>$65,175</td></tr>
-          <tr><td>$4,000,000</td><td>$2,508,000</td><td>$1,881,000</td><td>$94,050</td></tr>
-          <tr class="tr-alt"><td>$5,000,000</td><td>$3,350,000+</td><td>$2,512,500+</td><td>$125,625+</td></tr>
+          <tr><td>$360,000</td><td style="text-align:center;">$30,000</td><td style="text-align:center;">$180,000</td><td style="text-align:center;">$0</td><td style="text-align:center;">$6,000</td><td style="text-align:center;">$258,000</td><td style="text-align:center;">$102,000</td><td style="text-align:center;">$76,500</td><td style="text-align:center; color:#5FD7FC; font-weight:700;">$3,825</td></tr>
+          <tr class="tr-alt"><td>$720,000</td><td style="text-align:center;">$60,000</td><td style="text-align:center;">$300,000</td><td style="text-align:center;">$60,000</td><td style="text-align:center;">$24,000</td><td style="text-align:center;">$456,000</td><td style="text-align:center;">$264,000</td><td style="text-align:center;">$198,000</td><td style="text-align:center; color:#5FD7FC; font-weight:700;">$9,900</td></tr>
+          <tr><td>$1,000,000</td><td style="text-align:center;">~$83,000</td><td style="text-align:center;">$400,000</td><td style="text-align:center;">$140,000</td><td style="text-align:center;">$40,000</td><td style="text-align:center;">$652,000</td><td style="text-align:center;">$348,000</td><td style="text-align:center;">$261,000</td><td style="text-align:center; color:#5FD7FC; font-weight:700;">$13,050</td></tr>
+          <tr class="tr-alt"><td>$1,200,000</td><td style="text-align:center;">$100,000</td><td style="text-align:center;">$480,000</td><td style="text-align:center;">$140,000</td><td style="text-align:center;">$60,000</td><td style="text-align:center;">$752,000</td><td style="text-align:center;">$448,000</td><td style="text-align:center;">$336,000</td><td style="text-align:center; color:#5FD7FC; font-weight:700;">$16,800</td></tr>
+          <tr><td>$1,800,000</td><td style="text-align:center;">$150,000</td><td style="text-align:center;">$600,000</td><td style="text-align:center;">$140,000</td><td style="text-align:center;">$90,000</td><td style="text-align:center;">$1,002,000</td><td style="text-align:center;">$798,000</td><td style="text-align:center;">$598,500</td><td style="text-align:center; color:#5FD7FC; font-weight:700;">$29,925</td></tr>
+          <tr class="tr-alt"><td>$3,000,000</td><td style="text-align:center;">$250,000</td><td style="text-align:center;">$750,000</td><td style="text-align:center;">$200,000</td><td style="text-align:center;">$240,000</td><td style="text-align:center;">$1,262,000</td><td style="text-align:center;">$1,738,000</td><td style="text-align:center;">$1,303,500</td><td style="text-align:center; color:#5FD7FC; font-weight:700;">$65,175</td></tr>
+          <tr><td>$4,000,000</td><td style="text-align:center;">~$333,000</td><td style="text-align:center;">$900,000</td><td style="text-align:center;">$200,000</td><td style="text-align:center;">$320,000</td><td style="text-align:center;">$1,492,000</td><td style="text-align:center;">$2,508,000</td><td style="text-align:center;">$1,881,000</td><td style="text-align:center; color:#5FD7FC; font-weight:700;">$94,050</td></tr>
+          <tr class="tr-alt"><td>$5,000,000</td><td style="text-align:center;">~$417,000</td><td style="text-align:center;">$1,000,000</td><td style="text-align:center;">$200,000</td><td style="text-align:center;">$450,000+</td><td style="text-align:center;">$1,650,000+</td><td style="text-align:center;">$3,350,000+</td><td style="text-align:center;">$2,512,500+</td><td style="text-align:center; color:#5FD7FC; font-weight:700;">$125,625+</td></tr>
         </tbody>
       </table>
     </div>
     <p style="font-size:13px; color:rgba(246,246,246,0.38); margin:12px 0 0; font-style:italic;">Illustrative projections only. Not guarantees.</p>
   </section>
 
-  <!-- Questions -->
+  <!-- 07 · Investor Terms -->
+  <section>
+    <div class="sec-counter"><span class="sec-num">07</span><div class="sec-line"></div></div>
+    <h2>Investor Terms &amp; Protection (Profit Participation)</h2>
+    <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px;">
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">5% contractual profit participation in qualifying profits and distributions.</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">No membership interest or ownership in Creator Skool LLC.</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">No voting, management, or inspection rights.</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">Distributions based on profits remaining after normal operating expenses, business obligations, and prudent reserves (annual review; discretionary quarterly possible).</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">In the event of a sale or liquidity event, the investor receives 5% of relevant net proceeds per the agreement.</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">Founder Buyback Rights (Optional): Beginning 36 months after the investment date, the Founder shall have the option, but not the obligation, to repurchase the profit participation rights at fair market value.</p></div>
+    </div>
+  </section>
+
+  <!-- 08 · LEGAL STRUCTURE -->
+  <section>
+    <div class="sec-counter"><span class="sec-num">08</span><div class="sec-line"></div></div>
+    <h2 class="sm">Legal Structure (Relevant to This Investment)</h2>
+    <div class="grid-2 legal-grid">
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:32px 30px;">
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#5B66F8; margin:0 0 14px;">Holding Entity</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0 0 6px; line-height:1.3;">Creator Skool Holdings LLC</h3>
+        <p style="font-size:13px; color:rgba(246,246,246,0.4); margin:0 0 18px;">(Wyoming)</p>
+        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.7; margin:0;">Holds 100% of core intellectual property and global branding.</p>
+      </div>
+      <div style="background:rgba(91,102,248,0.08); border:1px solid rgba(91,102,248,0.3); border-radius:10px; padding:32px 30px;">
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#5FD7FC; margin:0 0 14px;">Operating Entity — Contractual Profit Participation</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0 0 6px; line-height:1.3;">Creator Skool LLC</h3>
+        <p style="font-size:13px; color:rgba(246,246,246,0.4); margin:0 0 18px;">(Texas Operating Company)</p>
+        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.7; margin:0;">Operating entity running day-to-day client fulfillment, invoicing, and revenue generation. The 5% profit participation is purely contractual — no membership units are issued.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · BACKED BY PROVEN SCALING FOOTPRINTS -->
+  <section>
+    <div class="sec-counter"><span class="sec-num">09</span><div class="sec-line"></div></div>
+    <h2>Backed by Proven Scaling Footprints</h2>
+
+    <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:24px 28px; margin-bottom:40px;">
+      <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#5B66F8; margin:0 0 10px;">ADVISOR – TAYLOR DAVIS &amp; SYSTEMS ARCHITECT REBECCA</p>
+      <p style="font-size:15px; color:rgba(246,246,246,0.8); line-height:1.72; margin:0;">Engineered digital scaling pipelines for PESI/Cross Country, scaling business systems to $2M–$5M+ annually, achieving $30k–$50k/mo within 90 days.</p>
+    </div>
+
+    <div style="margin-bottom:32px;">
+      <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#5B66F8; margin:0 0 14px;">THE JASON MELAND SYSTEM &amp; REVENUE PATHWAY</p>
+      <p style="font-size:16px; color:rgba(246,246,246,0.82); line-height:1.78; margin:0;">Jason Meland’s Magic Messaging + 8 Core Beliefs Shifting framework — the same system responsible for scaling multiple high-ticket coaching businesses from inconsistent revenue to predictable, high-velocity pipelines.</p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:40px;">
+      <div style="background:rgba(91,102,248,0.09); border:1px solid rgba(91,102,248,0.32); border-radius:10px; padding:36px 28px; text-align:center;">
+        <p style="font-size:12px; color:rgba(246,246,246,0.5); margin:0 0 14px; letter-spacing:0.08em; font-family:'Space Grotesk',sans-serif;">Patty B.</p>
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(48px,7vw,64px); font-weight:700; color:#5B66F8; line-height:1; margin:0 0 12px;">5.3×</p>
+        <p style="font-size:13px; color:rgba(246,246,246,0.45); margin:0;">in 6 months</p>
+      </div>
+      <div style="background:rgba(95,215,252,0.06); border:1px solid rgba(95,215,252,0.3); border-radius:10px; padding:36px 28px; text-align:center;">
+        <p style="font-size:12px; color:rgba(246,246,246,0.5); margin:0 0 14px; letter-spacing:0.08em; font-family:'Space Grotesk',sans-serif;">Leo J.</p>
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(48px,7vw,64px); font-weight:700; color:#5FD7FC; line-height:1; margin:0 0 12px;">4.1×</p>
+        <p style="font-size:13px; color:rgba(246,246,246,0.45); margin:0;">in 5 months</p>
+      </div>
+      <div style="background:rgba(243,102,252,0.06); border:1px solid rgba(243,102,252,0.3); border-radius:10px; padding:36px 28px; text-align:center;">
+        <p style="font-size:12px; color:rgba(246,246,246,0.5); margin:0 0 14px; letter-spacing:0.08em; font-family:'Space Grotesk',sans-serif;">Jessica S.</p>
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(48px,7vw,64px); font-weight:700; color:#F366FC; line-height:1; margin:0 0 12px;">5.0×</p>
+        <p style="font-size:13px; color:rgba(246,246,246,0.45); margin:0;">in 6 months</p>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="case-row" style="display:grid; grid-template-columns:148px 1fr; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.08);">
+        <div class="case-label" style="background:rgba(91,102,248,0.13); padding:24px 18px; display:flex; align-items:center; justify-content:center; text-align:center; border-right:1px solid rgba(91,102,248,0.2);">
+          <div><p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; color:#5B66F8; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 8px;">Case A</p><p style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0;">Patty B.</p></div>
+        </div>
+        <div style="padding:24px 28px; background:rgba(255,255,255,0.018);"><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.72; margin:0;">Proprietary high-ticket messaging funnel scaling from a baseline of $4,000/mo to $21,000/mo in 6 months (<strong style="color:#5B66F8; font-weight:600;">5.3x growth multiplier</strong>).</p></div>
+      </div>
+      <div class="case-row" style="display:grid; grid-template-columns:148px 1fr; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.08);">
+        <div class="case-label" style="background:rgba(95,215,252,0.07); padding:24px 18px; display:flex; align-items:center; justify-content:center; text-align:center; border-right:1px solid rgba(95,215,252,0.2);">
+          <div><p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; color:#5FD7FC; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 8px;">Case B</p><p style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0;">Leo J.</p></div>
+        </div>
+        <div style="padding:24px 28px; background:rgba(255,255,255,0.018);"><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.72; margin:0;">Holistic alignment offer scaled from a starting run rate of $8,000/mo to $33,000/mo in 5 months (<strong style="color:#5FD7FC; font-weight:600;">4.1x growth multiplier</strong>).</p></div>
+      </div>
+      <div class="case-row" style="display:grid; grid-template-columns:148px 1fr; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.08);">
+        <div class="case-label" style="background:rgba(243,102,252,0.07); padding:24px 18px; display:flex; align-items:center; justify-content:center; text-align:center; border-right:1px solid rgba(243,102,252,0.2);">
+          <div><p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; color:#F366FC; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 8px;">Case C</p><p style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0;">Jessica S.</p></div>
+        </div>
+        <div style="padding:24px 28px; background:rgba(255,255,255,0.018);"><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.72; margin:0;">Optimized executive transformation offer scaled from $11,000/mo baseline to $55,000/mo in 6 months (<strong style="color:#F366FC; font-weight:600;">5.0x growth multiplier</strong>).</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · QUESTIONS & DISCUSSION -->
   <section style="padding:88px 0 100px;">
-    <div class="sec-counter"><span class="sec-num">15</span><div class="sec-line"></div></div>
+    <div class="sec-counter"><span class="sec-num">10</span><div class="sec-line"></div></div>
     <h2>Questions &amp; Discussion</h2>
     <div style="background:radial-gradient(ellipse at 42% 50%,rgba(23,23,83,0.85) 0%,rgba(15,15,16,0.6) 70%); border:1px solid rgba(91,102,248,0.22); border-radius:14px; padding:72px 64px; text-align:center;">
-      <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(18px,3vw,24px); font-weight:600; color:#F6F6F6; margin:0 0 28px;">Thank you for your partnership and vision.</p>
+      <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(18px,3vw,24px); font-weight:600; color:#F6F6F6; margin:0 0 28px; letter-spacing:-0.015em; line-height:1.3;">Thank you for your partnership and vision.</p>
       <div style="width:44px; height:2px; background:linear-gradient(90deg,#5B66F8,#5FD7FC); margin:0 auto 28px;"></div>
       <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(15px,2vw,18px); color:#5FD7FC; font-weight:500; letter-spacing:0.02em; margin:0;">Reach out to Laz.</p>
     </div>
@@ -296,29 +630,280 @@ canvas { width: 100% !important; display: block; }
 </div>
 
 <script>
-/* Full working chart code from your Dusty file */
 (function() {
   function drawOrganicChart() {
     const canvas = document.getElementById('organicCanvas');
     if (!canvas) return;
-    // Add your original drawOrganicChart code here
-    console.log("Organic chart would render here");
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width === 0) return;
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    const W = rect.width, H = rect.height;
+    const isMobile = W < 480;
+    const padL = isMobile ? 58 : 68, padR = 24, padT = isMobile ? 58 : 72, padB = isMobile ? 48 : 58;
+    const chartW = W - padL - padR, chartH = H - padT - padB;
+
+    const revenue  = [12000,20000,32000,44000,56000,68000];
+    const expenses = [1224,1224,1224,1999,1999,1999];
+    const maxVal = 85000;
+    const revLabels = ['$12K','$20K','$32K','$44K','$56K','$68K'];
+    const xLabels = ['Mo. 1','Mo. 2','Mo. 3','Mo. 4','Mo. 5','Mo. 6'];
+
+    const toY = v => padT + chartH - (v / maxVal * chartH);
+    const toX = i => padL + (i / 5) * chartW;
+
+    [0,20000,40000,60000,80000].forEach(v => {
+      const y = toY(v);
+      ctx.strokeStyle = 'rgba(255,255,255,0.07)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W - padR, y); ctx.stroke();
+      ctx.fillStyle = 'rgba(246,246,246,0.3)';
+      ctx.font = (isMobile ? '9' : '11') + 'px "DM Sans",sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(v === 0 ? '$0' : '$'+(v/1000)+'k', padL - 5, y + 4);
+    });
+    xLabels.forEach((lbl, i) => {
+      ctx.fillStyle = 'rgba(246,246,246,0.38)';
+      ctx.font = (isMobile ? '9' : '11') + 'px "DM Sans",sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(lbl, toX(i), H - (isMobile ? 6 : 20));
+    });
+
+    ctx.beginPath();
+    ctx.moveTo(toX(0), toY(revenue[0]));
+    for (let i = 1; i < 6; i++) ctx.lineTo(toX(i), toY(revenue[i]));
+    for (let i = 5; i >= 0; i--) ctx.lineTo(toX(i), toY(expenses[i]));
+    ctx.closePath();
+    const fillG = ctx.createLinearGradient(0, padT, 0, padT + chartH);
+    fillG.addColorStop(0, 'rgba(74,28,164,0.38)'); fillG.addColorStop(1, 'rgba(74,28,164,0.06)');
+    ctx.fillStyle = fillG; ctx.fill();
+
+    ctx.beginPath(); ctx.moveTo(toX(0), toY(revenue[0]));
+    for (let i = 1; i < 6; i++) ctx.lineTo(toX(i), toY(revenue[i]));
+    ctx.strokeStyle = '#4A1CA4'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round'; ctx.stroke();
+
+    ctx.beginPath(); ctx.moveTo(toX(0), toY(expenses[0]));
+    for (let i = 1; i < 6; i++) ctx.lineTo(toX(i), toY(expenses[i]));
+    ctx.strokeStyle = '#5FD7FC'; ctx.lineWidth = 2; ctx.lineJoin = 'round'; ctx.stroke();
+
+    revenue.forEach((v, i) => {
+      const x = toX(i), y = toY(v);
+      ctx.beginPath(); ctx.arc(x, y, 4.5, 0, Math.PI*2); ctx.fillStyle = '#4A1CA4'; ctx.fill();
+      if (i === 0) return;
+      ctx.fillStyle = '#4A1CA4';
+      ctx.font = (isMobile ? '10' : '13') + 'px "DM Sans",sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(revLabels[i], x, y - 11);
+    });
+    expenses.forEach((v, i) => {
+      ctx.beginPath(); ctx.arc(toX(i), toY(v), 3.5, 0, Math.PI*2); ctx.fillStyle = '#5FD7FC'; ctx.fill();
+    });
+
+    if (!isMobile) {
+      const lx = padL + 6;
+      const ly = padT - 18;
+      ctx.beginPath(); ctx.arc(lx+7, ly+7, 5, 0, Math.PI*2); ctx.fillStyle = '#4A1CA4'; ctx.fill();
+      ctx.fillStyle = 'rgba(246,246,246,0.75)'; ctx.font = '12px "DM Sans",sans-serif'; ctx.textAlign = 'left';
+      ctx.fillText('Organic Revenue', lx+18, ly+12);
+      ctx.beginPath(); ctx.arc(lx+158, ly+7, 5, 0, Math.PI*2); ctx.fillStyle = '#5FD7FC'; ctx.fill();
+      ctx.fillStyle = 'rgba(246,246,246,0.75)';
+      ctx.fillText('Scale Expenses', lx+169, ly+12);
+    }
   }
 
   function drawRevenueChart() {
     const canvas = document.getElementById('revenueCanvas');
     if (!canvas) return;
-    // Add your original drawRevenueChart code here
-    console.log("Revenue chart would render here");
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width === 0) return;
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    const W = rect.width, H = rect.height;
+    const isMobile = W < 480;
+    const padL = isMobile ? 58 : 68, padR = 24, padT = isMobile ? 58 : 72, padB = isMobile ? 48 : 58;
+    const chartW = W - padL - padR, chartH = H - padT - padB;
+
+    const revenue  = [12000,20000,32000,44000,56000,68000];
+    const expenses = [8000,11000,14000,17000,20000,22000];
+    const maxVal = 85000;
+    const revLabels = ['$12K','$20K','$32K','$44K','$56K','$68K'];
+    const xLabels = ['Mo. 1','Mo. 2','Mo. 3','Mo. 4','Mo. 5','Mo. 6'];
+
+    const toY = v => padT + chartH - (v / maxVal * chartH);
+    const toX = i => padL + (i / 5) * chartW;
+
+    [0,20000,40000,60000,80000].forEach(v => {
+      const y = toY(v);
+      ctx.strokeStyle = 'rgba(255,255,255,0.07)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W - padR, y); ctx.stroke();
+      ctx.fillStyle = 'rgba(246,246,246,0.3)';
+      ctx.font = (isMobile ? '9' : '11') + 'px "DM Sans",sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(v === 0 ? '$0' : '$'+(v/1000)+'k', padL - 5, y + 4);
+    });
+    xLabels.forEach((lbl, i) => {
+      ctx.fillStyle = 'rgba(246,246,246,0.38)';
+      ctx.font = (isMobile ? '9' : '11') + 'px "DM Sans",sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(lbl, toX(i), H - (isMobile ? 6 : 20));
+    });
+
+    ctx.beginPath();
+    ctx.moveTo(toX(0), toY(revenue[0]));
+    for (let i = 1; i < 6; i++) ctx.lineTo(toX(i), toY(revenue[i]));
+    for (let i = 5; i >= 0; i--) ctx.lineTo(toX(i), toY(expenses[i]));
+    ctx.closePath();
+    const fillG = ctx.createLinearGradient(0, padT, 0, padT + chartH);
+    fillG.addColorStop(0, 'rgba(91,102,248,0.22)'); fillG.addColorStop(1, 'rgba(91,102,248,0.04)');
+    ctx.fillStyle = fillG; ctx.fill();
+
+    ctx.beginPath(); ctx.moveTo(toX(0), toY(revenue[0]));
+    for (let i = 1; i < 6; i++) ctx.lineTo(toX(i), toY(revenue[i]));
+    ctx.strokeStyle = '#5B66F8'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round'; ctx.stroke();
+
+    ctx.beginPath(); ctx.moveTo(toX(0), toY(expenses[0]));
+    for (let i = 1; i < 6; i++) ctx.lineTo(toX(i), toY(expenses[i]));
+    ctx.strokeStyle = '#5FD7FC'; ctx.lineWidth = 2; ctx.lineJoin = 'round'; ctx.stroke();
+
+    revenue.forEach((v, i) => {
+      const x = toX(i), y = toY(v);
+      ctx.beginPath(); ctx.arc(x, y, 4.5, 0, Math.PI*2); ctx.fillStyle = '#5B66F8'; ctx.fill();
+      if (i === 0) return;
+      ctx.fillStyle = '#5B66F8';
+      ctx.font = (isMobile ? '10' : '13') + 'px "DM Sans",sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(revLabels[i], x, y - 11);
+    });
+    expenses.forEach((v, i) => {
+      ctx.beginPath(); ctx.arc(toX(i), toY(v), 3.5, 0, Math.PI*2); ctx.fillStyle = '#5FD7FC'; ctx.fill();
+    });
+
+    if (!isMobile) {
+      const lx = padL + 6;
+      const ly = padT - 18;
+      ctx.beginPath(); ctx.arc(lx+7, ly+7, 5, 0, Math.PI*2); ctx.fillStyle = '#5B66F8'; ctx.fill();
+      ctx.fillStyle = 'rgba(246,246,246,0.75)'; ctx.font = '12px "DM Sans",sans-serif'; ctx.textAlign = 'left';
+      ctx.fillText('Projected Revenue', lx+18, ly+12);
+      ctx.beginPath(); ctx.arc(lx+175, ly+7, 5, 0, Math.PI*2); ctx.fillStyle = '#5FD7FC'; ctx.fill();
+      ctx.fillStyle = 'rgba(246,246,246,0.75)';
+      ctx.fillText('Scale Expenses', lx+186, ly+12);
+    }
+  }
+
+  function drawProofChart() {
+    const canvas = document.getElementById('proofCanvas');
+    if (!canvas) return;
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width === 0) return;
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    const W = rect.width, H = rect.height;
+    const isMobile = W < 480;
+    const padL = isMobile ? 58 : 68, padR = 20, padT = isMobile ? 52 : 62, padB = 30;
+    const chartW = W - padL - padR, chartH = H - padT - padB;
+
+    const series = [
+      { name: 'Patty B.',   data: [4000, 5000, 7000, 7000, 14000, 21000], color: '#5B66F8' },
+      { name: 'Leo J.',     data: [8000, 10000, 9000, 22000, 33000, null], color: '#5FD7FC' },
+      { name: 'Jessica S.', data: [11000, 14000, 21000, 19000, 38000, 55000], color: '#F366FC' }
+    ];
+    const maxVal = 60000;
+    const xLabels = ['Mo. 1','Mo. 2','Mo. 3','Mo. 4','Mo. 5','Mo. 6'];
+
+    const toY = v => padT + chartH - (v / maxVal * chartH);
+    const toX = i => padL + (i / 5) * chartW;
+
+    [0,10000,20000,30000,40000,50000,60000].forEach(v => {
+      const y = toY(v);
+      ctx.strokeStyle = 'rgba(255,255,255,0.055)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W - padR, y); ctx.stroke();
+      ctx.fillStyle = 'rgba(246,246,246,0.28)';
+      ctx.font = (isMobile ? '9' : '10') + 'px "DM Sans",sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText('$'+(v/1000)+'k', padL - 4, y + 3);
+    });
+    xLabels.forEach((lbl, i) => {
+      ctx.fillStyle = 'rgba(246,246,246,0.35)';
+      ctx.font = (isMobile ? '9' : '11') + 'px "DM Sans",sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(lbl, toX(i), H - 6);
+    });
+
+    series.forEach(s => {
+      const startIdx = s.data.findIndex(v => v !== null);
+      const lastIdx = s.data.reduce((acc, v, i) => v !== null ? i : acc, startIdx);
+      ctx.beginPath();
+      ctx.moveTo(toX(startIdx), toY(s.data[startIdx]));
+      s.data.forEach((v, i) => { if (v !== null && i > startIdx) ctx.lineTo(toX(i), toY(v)); });
+      ctx.lineTo(toX(lastIdx), toY(0)); ctx.lineTo(toX(startIdx), toY(0)); ctx.closePath();
+      const r = parseInt(s.color.slice(1,3),16), g = parseInt(s.color.slice(3,5),16), b = parseInt(s.color.slice(5,7),16);
+      ctx.fillStyle = 'rgba('+r+','+g+','+b+',0.055)'; ctx.fill();
+      ctx.beginPath();
+      let started = false;
+      s.data.forEach((v, i) => {
+        if (v === null) return;
+        if (!started) { ctx.moveTo(toX(i), toY(v)); started = true; }
+        else ctx.lineTo(toX(i), toY(v));
+      });
+      ctx.strokeStyle = s.color; ctx.lineWidth = 2.5; ctx.lineJoin = 'round'; ctx.stroke();
+      s.data.forEach((v, i) => {
+        if (v === null) return;
+        ctx.beginPath(); ctx.arc(toX(i), toY(v), 3.5, 0, Math.PI*2); ctx.fillStyle = s.color; ctx.fill();
+      });
+    });
+
+    if (!isMobile) {
+      const colW = Math.floor(chartW / 3);
+      series.forEach((s, idx) => {
+        const nonNull = s.data.filter(v => v !== null);
+        const startK = nonNull[0]/1000, endK = nonNull[nonNull.length-1]/1000;
+        const lx = padL + idx * colW;
+        const ly = padT - 28;
+        ctx.beginPath(); ctx.moveTo(lx, ly+5); ctx.lineTo(lx+18, ly+5);
+        ctx.strokeStyle = s.color; ctx.lineWidth = 2.5; ctx.stroke();
+        ctx.beginPath(); ctx.arc(lx+9, ly+5, 4, 0, Math.PI*2); ctx.fillStyle = s.color; ctx.fill();
+        ctx.fillStyle = 'rgba(246,246,246,0.7)'; ctx.font = '11px "DM Sans",sans-serif'; ctx.textAlign = 'left';
+        ctx.fillText(s.name + '  ·  $'+startK+'k → $'+endK+'k', lx+24, ly+9);
+      });
+    }
   }
 
   function drawAll() {
     drawOrganicChart();
     drawRevenueChart();
+    drawProofChart();
   }
 
-  window.addEventListener('load', drawAll);
-  setTimeout(drawAll, 400);
+  if (document.readyState === 'complete') {
+    drawAll();
+  } else {
+    window.addEventListener('load', drawAll);
+  }
+  setTimeout(drawAll, 350);
+
+  if (typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(() => {
+      clearTimeout(window.__chartTimer);
+      window.__chartTimer = setTimeout(drawAll, 80);
+    });
+    const rev = document.getElementById('revenueCanvas');
+    const organic = document.getElementById('organicCanvas');
+    const proof = document.getElementById('proofCanvas');
+    if (rev) ro.observe(rev.parentElement);
+    if (organic) ro.observe(organic.parentElement);
+    if (proof) ro.observe(proof.parentElement);
+  } else {
+    window.addEventListener('resize', () => {
+      clearTimeout(window.__chartTimer);
+      window.__chartTimer = setTimeout(drawAll, 100);
+    });
+  }
 })();
 </script>
 </body>
