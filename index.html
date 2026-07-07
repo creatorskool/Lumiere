@@ -12,10 +12,6 @@
 html, body { margin: 0; padding: 0; background: #0F0F10; overflow-x: hidden; }
 body { color: #F6F6F6; font-family: 'DM Sans', sans-serif; line-height: 1.6; }
 
-/* ══════════════════════════════════════════════
-   BASE = PORTRAIT MOBILE (narrow)
-══════════════════════════════════════════════ */
-
 .cover {
   min-height: 100svh;
   background: radial-gradient(ellipse at 38% 58%, rgba(23,23,83,0.95) 0%, #0F0F10 65%);
@@ -140,18 +136,6 @@ canvas { width: 100% !important; display: block; }
 .text-magenta { color: #F366FC; }
 .fw7 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
 
-.grid-meta-2   { grid-template-columns: 1fr !important; }
-.tranche-grid  { grid-template-columns: 1fr !important; }
-.legal-grid    { grid-template-columns: 1fr !important; }
-.case-row      { grid-template-columns: 1fr !important; }
-.case-label    { padding: 14px !important; }
-.conversion-seq { flex-wrap: wrap; }
-.conv-cell     { flex: 0 0 50%; min-width: 0; min-height: 72px; }
-.conversion-arrow { display: none !important; }
-.conversion-seq > div:nth-child(5),
-.conversion-seq > div:nth-child(7) { border-top: 1px solid rgba(255,255,255,0.08) !important; }
-.conversion-seq > div:nth-child(5) { border-left: none !important; }
-
 @media (min-width: 768px), (orientation: landscape) and (min-width: 560px) {
   .cover { padding: 72px 40px; min-height: 100vh; }
   .cover-eyebrow { font-size: 12px; letter-spacing: 0.32em; margin-bottom: 40px; }
@@ -185,11 +169,6 @@ canvas { width: 100% !important; display: block; }
   .grid-2   { grid-template-columns: 1fr 1fr;     gap: 18px; }
   .grid-2sm { grid-template-columns: 1fr 1fr;     gap: 16px; margin-bottom: 32px; }
   .grid-3-mb { grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 24px; }
-  .tranche-grid  { grid-template-columns: 1fr 1fr 1fr !important; }
-  .legal-grid    { grid-template-columns: 1fr 1fr !important; }
-  .grid-meta-2   { grid-template-columns: 1fr 1fr !important; }
-  .case-row      { grid-template-columns: 130px 1fr !important; }
-  .case-label    { padding: 20px 16px !important; }
 
   .conversion-seq  { flex-wrap: nowrap !important; }
   .conv-cell { flex: 1 !important; }
@@ -269,7 +248,7 @@ canvas { width: 100% !important; display: block; }
 
 <div class="main">
 
-  <!-- 01 · EXECUTIVE SUMMARY -->
+  <!-- 01 EXECUTIVE SUMMARY -->
   <section>
     <div class="sec-counter"><span class="sec-num">01</span><div class="sec-line"></div></div>
     <h2>EXECUTIVE SUMMARY</h2>
@@ -296,7 +275,7 @@ canvas { width: 100% !important; display: block; }
     </div>
   </section>
 
-  <!-- INVESTMENT STRUCTURE -->
+  <!-- Investment Structure -->
   <section style="padding:56px 0;">
     <div style="background:linear-gradient(135deg,rgba(74,28,164,0.38) 0%,rgba(23,23,83,0.55) 100%); border:1px solid rgba(91,102,248,0.28); border-radius:10px; padding:36px 44px;">
       <h3 style="font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; color:#F6F6F6; margin:0 0 14px; letter-spacing:-0.01em;">Investment Structure &amp; Profit Participation</h3>
@@ -306,13 +285,12 @@ canvas { width: 100% !important; display: block; }
 
   <!-- Relationship Transition -->
   <section>
-    <div class="sec-counter"><span class="sec-num"></span><div class="sec-line"></div></div>
     <h2 class="sm">Relationship Transition &amp; Ongoing Advisory</h2>
     <p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.75; margin:0 0 18px;">This investment represents a strategic transition. The $20,000 capital injection buys out Lazarus Ross’s existing 12% interest in Lumiere Investments. In exchange, Steve and Brandyn (through their holding company) receive a 5% contractual profit participation in Creator Skool.</p>
     <p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.75; margin:0;">This transaction includes an ongoing advisory relationship with Steve and Brandyn to serve as trusted advisors to Creator Skool, providing financial guidance, strategic input on growth initiatives, and support in scaling the business. Their expertise remains available on an as-needed basis.</p>
   </section>
 
-  <!-- 02 · THE MACRO MARKET OPPORTUNITY -->
+  <!-- 02 MACRO MARKET -->
   <section>
     <div class="sec-counter"><span class="sec-num">02</span><div class="sec-line"></div></div>
     <h2>The Macro Market Opportunity</h2>
@@ -369,7 +347,7 @@ canvas { width: 100% !important; display: block; }
     <p style="font-size:13px; color:rgba(246,246,246,0.42); margin:13px 0 0; font-style:italic;">To preserve delivery quality, active foundational enrollment is capped at 25 concurrent members. Scale is built through premium pricing, not manual hours.</p>
   </section>
 
-  <!-- 03 · GRANULAR $20,000 USE OF FUNDS -->
+  <!-- 03 USE OF FUNDS -->
   <section>
     <div class="sec-counter"><span class="sec-num">03</span><div class="sec-line"></div></div>
     <h2>Granular $20,000 Use of Funds</h2>
@@ -426,7 +404,7 @@ canvas { width: 100% !important; display: block; }
     <p style="font-size:13px; color:rgba(246,246,246,0.42); margin:13px 0 0; font-style:italic;">Transparency Note: All allocations are stated with full clarity. The vehicle repair allocation directly supports in-person client acquisition and event attendance.</p>
   </section>
 
-  <!-- 04 · PIPELINE VELOCITY & ECONOMICS -->
+  <!-- 04 PIPELINE -->
   <section>
     <div class="sec-counter"><span class="sec-num">04</span><div class="sec-line"></div></div>
     <h2>Pipeline Velocity &amp; Economics</h2>
@@ -462,9 +440,129 @@ canvas { width: 100% !important; display: block; }
     </div>
   </section>
 
-  <!-- 05 & 06 · ILLUSTRATIVE RETURNS (kept chart structure, updated tables) -->
+  <!-- 05 ORGANIC SCALING (chart kept for visual consistency) -->
   <section>
     <div class="sec-counter"><span class="sec-num">05</span><div class="sec-line"></div></div>
+    <h2>Organic 6-Month Scaling Projections</h2>
+    <div class="chart-wrap" style="background:rgba(74,28,164,0.12); border-color:rgba(74,28,164,0.28);">
+      <canvas id="organicCanvas"></canvas>
+    </div>
+    <p style="font-size:13px; color:rgba(246,246,246,0.38); margin:12px 0 0; font-style:italic;">Illustrative organic growth trajectory (chart preserved from foundation template).</p>
+  </section>
+
+  <!-- 06 PAID ADS SCALING (chart kept) -->
+  <section>
+    <div class="sec-counter"><span class="sec-num">06</span><div class="sec-line"></div></div>
+    <h2>Paid Ads 6-Month Scaling Projections</h2>
+    <div class="chart-wrap">
+      <canvas id="revenueCanvas"></canvas>
+    </div>
+    <p style="font-size:13px; color:rgba(246,246,246,0.38); margin:12px 0 0; font-style:italic;">Illustrative paid acquisition growth trajectory (chart preserved from foundation template).</p>
+  </section>
+
+  <!-- 07 INVESTOR TERMS -->
+  <section>
+    <div class="sec-counter"><span class="sec-num">07</span><div class="sec-line"></div></div>
+    <h2>Investor Terms &amp; Protection (Profit Participation)</h2>
+    <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px;">
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">5% contractual profit participation in qualifying profits and distributions.</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">No membership interest or ownership in Creator Skool LLC.</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">No voting, management, or inspection rights.</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">Distributions based on profits remaining after normal operating expenses, business obligations, and prudent reserves (annual review; discretionary quarterly possible).</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">In the event of a sale or liquidity event, the investor receives 5% of relevant net proceeds per the agreement.</p></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">Founder Buyback Rights (Optional): Beginning 36 months after the investment date, the Founder shall have the option, but not the obligation, to repurchase the profit participation rights at fair market value.</p></div>
+    </div>
+  </section>
+
+  <!-- 08 LEGAL STRUCTURE -->
+  <section>
+    <div class="sec-counter"><span class="sec-num">08</span><div class="sec-line"></div></div>
+    <h2 class="sm">Legal Structure (Relevant to This Investment)</h2>
+    <div class="grid-2 legal-grid">
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:32px 30px;">
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#5B66F8; margin:0 0 14px;">Holding Entity</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0 0 6px; line-height:1.3;">Creator Skool Holdings LLC</h3>
+        <p style="font-size:13px; color:rgba(246,246,246,0.4); margin:0 0 18px;">(Wyoming)</p>
+        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.7; margin:0;">Holds 100% of core intellectual property and global branding.</p>
+      </div>
+      <div style="background:rgba(91,102,248,0.08); border:1px solid rgba(91,102,248,0.3); border-radius:10px; padding:32px 30px;">
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#5FD7FC; margin:0 0 14px;">Operating Entity — Contractual Profit Participation</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0 0 6px; line-height:1.3;">Creator Skool LLC</h3>
+        <p style="font-size:13px; color:rgba(246,246,246,0.4); margin:0 0 18px;">(Texas Operating Company)</p>
+        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.7; margin:0;">Operating entity running day-to-day client fulfillment, invoicing, and revenue generation. The 5% profit participation is purely contractual — no membership units are issued.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 FOUNDER BUYBACK -->
+  <section style="padding:72px 0;">
+    <div class="sec-counter"><span class="sec-num">09</span><div class="sec-line"></div></div>
+    <h2 class="sm">Founder Buyback Rights (Optional)</h2>
+    <p style="font-size:16px; color:rgba(246,246,246,0.8); line-height:1.82; max-width:800px;">Beginning 36 months after the investment date, the Founder shall have the option, but not the obligation, to repurchase the Investor’s profit participation rights at fair market value.</p>
+  </section>
+
+  <!-- 10 BACKED BY PROVEN SCALING FOOTPRINTS (Jason Meland section) -->
+  <section>
+    <div class="sec-counter"><span class="sec-num">10</span><div class="sec-line"></div></div>
+    <h2>Backed by Proven Scaling Footprints</h2>
+
+    <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:24px 28px; margin-bottom:40px;">
+      <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#5B66F8; margin:0 0 10px;">ADVISOR – TAYLOR DAVIS &amp; SYSTEMS ARCHITECT REBECCA</p>
+      <p style="font-size:15px; color:rgba(246,246,246,0.8); line-height:1.72; margin:0;">Engineered digital scaling pipelines for PESI/Cross Country, scaling business systems to $2M–$5M+ annually, achieving $30k–$50k/mo within 90 days.</p>
+    </div>
+
+    <div style="margin-bottom:32px;">
+      <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#5B66F8; margin:0 0 14px;">THE JASON MELAND SYSTEM &amp; REVENUE PATHWAY</p>
+      <p style="font-size:16px; color:rgba(246,246,246,0.82); line-height:1.78; margin:0;">Jason Meland’s Magic Messaging + 8 Core Beliefs Shifting framework — the same system responsible for scaling multiple high-ticket coaching businesses from inconsistent revenue to predictable, high-velocity pipelines.</p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:40px;">
+      <div style="background:rgba(91,102,248,0.09); border:1px solid rgba(91,102,248,0.32); border-radius:10px; padding:36px 28px; text-align:center;">
+        <p style="font-size:12px; color:rgba(246,246,246,0.5); margin:0 0 14px; letter-spacing:0.08em; font-family:'Space Grotesk',sans-serif;">Patty B.</p>
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(48px,7vw,64px); font-weight:700; color:#5B66F8; line-height:1; margin:0 0 12px;">5.3×</p>
+        <p style="font-size:13px; color:rgba(246,246,246,0.45); margin:0;">in 6 months</p>
+      </div>
+      <div style="background:rgba(95,215,252,0.06); border:1px solid rgba(95,215,252,0.3); border-radius:10px; padding:36px 28px; text-align:center;">
+        <p style="font-size:12px; color:rgba(246,246,246,0.5); margin:0 0 14px; letter-spacing:0.08em; font-family:'Space Grotesk',sans-serif;">Leo J.</p>
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(48px,7vw,64px); font-weight:700; color:#5FD7FC; line-height:1; margin:0 0 12px;">4.1×</p>
+        <p style="font-size:13px; color:rgba(246,246,246,0.45); margin:0;">in 5 months</p>
+      </div>
+      <div style="background:rgba(243,102,252,0.06); border:1px solid rgba(243,102,252,0.3); border-radius:10px; padding:36px 28px; text-align:center;">
+        <p style="font-size:12px; color:rgba(246,246,246,0.5); margin:0 0 14px; letter-spacing:0.08em; font-family:'Space Grotesk',sans-serif;">Jessica S.</p>
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(48px,7vw,64px); font-weight:700; color:#F366FC; line-height:1; margin:0 0 12px;">5.0×</p>
+        <p style="font-size:13px; color:rgba(246,246,246,0.45); margin:0;">in 6 months</p>
+      </div>
+    </div>
+
+    <div class="chart-wrap" style="margin-bottom:40px;">
+      <canvas id="proofCanvas"></canvas>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="case-row" style="display:grid; grid-template-columns:148px 1fr; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.08);">
+        <div class="case-label" style="background:rgba(91,102,248,0.13); padding:24px 18px; display:flex; align-items:center; justify-content:center; text-align:center; border-right:1px solid rgba(91,102,248,0.2);">
+          <div><p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; color:#5B66F8; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 8px;">Case A</p><p style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0;">Patty B.</p></div>
+        </div>
+        <div style="padding:24px 28px; background:rgba(255,255,255,0.018);"><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.72; margin:0;">Proprietary high-ticket messaging funnel scaling from a baseline of $4,000/mo to $21,000/mo in 6 months (<strong style="color:#5B66F8; font-weight:600;">5.3x growth multiplier</strong>).</p></div>
+      </div>
+      <div class="case-row" style="display:grid; grid-template-columns:148px 1fr; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.08);">
+        <div class="case-label" style="background:rgba(95,215,252,0.07); padding:24px 18px; display:flex; align-items:center; justify-content:center; text-align:center; border-right:1px solid rgba(95,215,252,0.2);">
+          <div><p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; color:#5FD7FC; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 8px;">Case B</p><p style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0;">Leo J.</p></div>
+        </div>
+        <div style="padding:24px 28px; background:rgba(255,255,255,0.018);"><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.72; margin:0;">Holistic alignment offer scaled from a starting run rate of $8,000/mo to $33,000/mo in 5 months (<strong style="color:#5FD7FC; font-weight:600;">4.1x growth multiplier</strong>).</p></div>
+      </div>
+      <div class="case-row" style="display:grid; grid-template-columns:148px 1fr; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.08);">
+        <div class="case-label" style="background:rgba(243,102,252,0.07); padding:24px 18px; display:flex; align-items:center; justify-content:center; text-align:center; border-right:1px solid rgba(243,102,252,0.2);">
+          <div><p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; color:#F366FC; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 8px;">Case C</p><p style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0;">Jessica S.</p></div>
+        </div>
+        <div style="padding:24px 28px; background:rgba(255,255,255,0.018);"><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.72; margin:0;">Optimized executive transformation offer scaled from $11,000/mo baseline to $55,000/mo in 6 months (<strong style="color:#F366FC; font-weight:600;">5.0x growth multiplier</strong>).</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 PROFIT PARTICIPATION ILLUSTRATIVE RETURNS (moved to correct position) -->
+  <section>
+    <div class="sec-counter"><span class="sec-num">11</span><div class="sec-line"></div></div>
     <h2>Profit Participation Illustrative Returns (5% Share)</h2>
 
     <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:600; color:#F6F6F6; margin:0 0 16px;">Organic Illustrative Returns (5% Share)</h3>
@@ -527,98 +625,25 @@ canvas { width: 100% !important; display: block; }
     <p style="font-size:13px; color:rgba(246,246,246,0.38); margin:12px 0 0; font-style:italic;">Illustrative projections only. Not guarantees.</p>
   </section>
 
-  <!-- 07 · Investor Terms -->
+  <!-- 12 DOCUMENTED RESOURCES -->
   <section>
-    <div class="sec-counter"><span class="sec-num">07</span><div class="sec-line"></div></div>
-    <h2>Investor Terms &amp; Protection (Profit Participation)</h2>
-    <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px;">
-      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">5% contractual profit participation in qualifying profits and distributions.</p></div>
-      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">No membership interest or ownership in Creator Skool LLC.</p></div>
-      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">No voting, management, or inspection rights.</p></div>
-      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">Distributions based on profits remaining after normal operating expenses, business obligations, and prudent reserves (annual review; discretionary quarterly possible).</p></div>
-      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">In the event of a sale or liquidity event, the investor receives 5% of relevant net proceeds per the agreement.</p></div>
-      <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:rgba(255,255,255,0.025); border-radius:6px; border-left:2px solid rgba(91,102,248,0.55);"><span style="color:#5B66F8; flex-shrink:0; margin-top:2px;">●</span><p style="font-size:14px; color:rgba(246,246,246,0.82); line-height:1.68; margin:0;">Founder Buyback Rights (Optional): Beginning 36 months after the investment date, the Founder shall have the option, but not the obligation, to repurchase the profit participation rights at fair market value.</p></div>
+    <div class="sec-counter"><span class="sec-num">12</span><div class="sec-line"></div></div>
+    <h2>Documented Resources &amp; Citations</h2>
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <div style="display:flex; gap:16px; padding:14px 20px; background:rgba(255,255,255,0.025); border-radius:6px; align-items:flex-start;"><span style="font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; color:#5B66F8; flex-shrink:0; min-width:24px;">[1]</span><span style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.62;">Precedence Research (2026): Global Personal Development Market Analysis.</span></div>
+      <div style="display:flex; gap:16px; padding:14px 20px; background:rgba(255,255,255,0.016); border-radius:6px; align-items:flex-start;"><span style="font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; color:#5B66F8; flex-shrink:0; min-width:24px;">[2]</span><span style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.62;">Mordor Intelligence (2025/2026): Executive Development and Corporate Leadership Forecasting.</span></div>
+      <div style="display:flex; gap:16px; padding:14px 20px; background:rgba(255,255,255,0.025); border-radius:6px; align-items:flex-start;"><span style="font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; color:#5B66F8; flex-shrink:0; min-width:24px;">[3]</span><span style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.62;">International Coaching Federation (ICF) Study (2025).</span></div>
+      <div style="display:flex; gap:16px; padding:14px 20px; background:rgba(255,255,255,0.016); border-radius:6px; align-items:flex-start;"><span style="font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; color:#5B66F8; flex-shrink:0; min-width:24px;">[4]</span><span style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.62;">Tandem Coach Corporate Insights (2026).</span></div>
+      <div style="display:flex; gap:16px; padding:14px 20px; background:rgba(255,255,255,0.025); border-radius:6px; align-items:flex-start;"><span style="font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; color:#5B66F8; flex-shrink:0; min-width:24px;">[5]</span><span style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.62;">Workspace Intelligence: Internal records and historical scaling benchmarks provided by operating partners Taylor Davis and consultant Jason Meland.</span></div>
+      <div style="display:flex; gap:16px; padding:14px 20px; background:rgba(255,255,255,0.016); border-radius:6px; align-items:flex-start;"><span style="font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; color:#5B66F8; flex-shrink:0; min-width:24px;">[6]</span><span style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.62;">Circle Data Analytics: 2026 State of Community Platforms report.</span></div>
+      <div style="display:flex; gap:16px; padding:14px 20px; background:rgba(255,255,255,0.025); border-radius:6px; align-items:flex-start;"><span style="font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; color:#5B66F8; flex-shrink:0; min-width:24px;">[7]</span><span style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.62;">Sharon Koh Funnel Benchmarks (2026).</span></div>
+      <div style="display:flex; gap:16px; padding:14px 20px; background:rgba(255,255,255,0.016); border-radius:6px; align-items:flex-start;"><span style="font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; color:#5B66F8; flex-shrink:0; min-width:24px;">[8]</span><span style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.62;">Financial Models Lab (2026): Operational coaching KPIs and overhead absorption metrics.</span></div>
     </div>
   </section>
 
-  <!-- 08 · LEGAL STRUCTURE -->
-  <section>
-    <div class="sec-counter"><span class="sec-num">08</span><div class="sec-line"></div></div>
-    <h2 class="sm">Legal Structure (Relevant to This Investment)</h2>
-    <div class="grid-2 legal-grid">
-      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:32px 30px;">
-        <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#5B66F8; margin:0 0 14px;">Holding Entity</p>
-        <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0 0 6px; line-height:1.3;">Creator Skool Holdings LLC</h3>
-        <p style="font-size:13px; color:rgba(246,246,246,0.4); margin:0 0 18px;">(Wyoming)</p>
-        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.7; margin:0;">Holds 100% of core intellectual property and global branding.</p>
-      </div>
-      <div style="background:rgba(91,102,248,0.08); border:1px solid rgba(91,102,248,0.3); border-radius:10px; padding:32px 30px;">
-        <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#5FD7FC; margin:0 0 14px;">Operating Entity — Contractual Profit Participation</p>
-        <h3 style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0 0 6px; line-height:1.3;">Creator Skool LLC</h3>
-        <p style="font-size:13px; color:rgba(246,246,246,0.4); margin:0 0 18px;">(Texas Operating Company)</p>
-        <p style="font-size:14px; color:rgba(246,246,246,0.72); line-height:1.7; margin:0;">Operating entity running day-to-day client fulfillment, invoicing, and revenue generation. The 5% profit participation is purely contractual — no membership units are issued.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 09 · BACKED BY PROVEN SCALING FOOTPRINTS -->
-  <section>
-    <div class="sec-counter"><span class="sec-num">09</span><div class="sec-line"></div></div>
-    <h2>Backed by Proven Scaling Footprints</h2>
-
-    <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:24px 28px; margin-bottom:40px;">
-      <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#5B66F8; margin:0 0 10px;">ADVISOR – TAYLOR DAVIS &amp; SYSTEMS ARCHITECT REBECCA</p>
-      <p style="font-size:15px; color:rgba(246,246,246,0.8); line-height:1.72; margin:0;">Engineered digital scaling pipelines for PESI/Cross Country, scaling business systems to $2M–$5M+ annually, achieving $30k–$50k/mo within 90 days.</p>
-    </div>
-
-    <div style="margin-bottom:32px;">
-      <p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#5B66F8; margin:0 0 14px;">THE JASON MELAND SYSTEM &amp; REVENUE PATHWAY</p>
-      <p style="font-size:16px; color:rgba(246,246,246,0.82); line-height:1.78; margin:0;">Jason Meland’s Magic Messaging + 8 Core Beliefs Shifting framework — the same system responsible for scaling multiple high-ticket coaching businesses from inconsistent revenue to predictable, high-velocity pipelines.</p>
-    </div>
-
-    <div class="grid-3" style="margin-bottom:40px;">
-      <div style="background:rgba(91,102,248,0.09); border:1px solid rgba(91,102,248,0.32); border-radius:10px; padding:36px 28px; text-align:center;">
-        <p style="font-size:12px; color:rgba(246,246,246,0.5); margin:0 0 14px; letter-spacing:0.08em; font-family:'Space Grotesk',sans-serif;">Patty B.</p>
-        <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(48px,7vw,64px); font-weight:700; color:#5B66F8; line-height:1; margin:0 0 12px;">5.3×</p>
-        <p style="font-size:13px; color:rgba(246,246,246,0.45); margin:0;">in 6 months</p>
-      </div>
-      <div style="background:rgba(95,215,252,0.06); border:1px solid rgba(95,215,252,0.3); border-radius:10px; padding:36px 28px; text-align:center;">
-        <p style="font-size:12px; color:rgba(246,246,246,0.5); margin:0 0 14px; letter-spacing:0.08em; font-family:'Space Grotesk',sans-serif;">Leo J.</p>
-        <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(48px,7vw,64px); font-weight:700; color:#5FD7FC; line-height:1; margin:0 0 12px;">4.1×</p>
-        <p style="font-size:13px; color:rgba(246,246,246,0.45); margin:0;">in 5 months</p>
-      </div>
-      <div style="background:rgba(243,102,252,0.06); border:1px solid rgba(243,102,252,0.3); border-radius:10px; padding:36px 28px; text-align:center;">
-        <p style="font-size:12px; color:rgba(246,246,246,0.5); margin:0 0 14px; letter-spacing:0.08em; font-family:'Space Grotesk',sans-serif;">Jessica S.</p>
-        <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(48px,7vw,64px); font-weight:700; color:#F366FC; line-height:1; margin:0 0 12px;">5.0×</p>
-        <p style="font-size:13px; color:rgba(246,246,246,0.45); margin:0;">in 6 months</p>
-      </div>
-    </div>
-
-    <div style="display:flex; flex-direction:column; gap:14px;">
-      <div class="case-row" style="display:grid; grid-template-columns:148px 1fr; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.08);">
-        <div class="case-label" style="background:rgba(91,102,248,0.13); padding:24px 18px; display:flex; align-items:center; justify-content:center; text-align:center; border-right:1px solid rgba(91,102,248,0.2);">
-          <div><p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; color:#5B66F8; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 8px;">Case A</p><p style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0;">Patty B.</p></div>
-        </div>
-        <div style="padding:24px 28px; background:rgba(255,255,255,0.018);"><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.72; margin:0;">Proprietary high-ticket messaging funnel scaling from a baseline of $4,000/mo to $21,000/mo in 6 months (<strong style="color:#5B66F8; font-weight:600;">5.3x growth multiplier</strong>).</p></div>
-      </div>
-      <div class="case-row" style="display:grid; grid-template-columns:148px 1fr; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.08);">
-        <div class="case-label" style="background:rgba(95,215,252,0.07); padding:24px 18px; display:flex; align-items:center; justify-content:center; text-align:center; border-right:1px solid rgba(95,215,252,0.2);">
-          <div><p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; color:#5FD7FC; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 8px;">Case B</p><p style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0;">Leo J.</p></div>
-        </div>
-        <div style="padding:24px 28px; background:rgba(255,255,255,0.018);"><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.72; margin:0;">Holistic alignment offer scaled from a starting run rate of $8,000/mo to $33,000/mo in 5 months (<strong style="color:#5FD7FC; font-weight:600;">4.1x growth multiplier</strong>).</p></div>
-      </div>
-      <div class="case-row" style="display:grid; grid-template-columns:148px 1fr; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.08);">
-        <div class="case-label" style="background:rgba(243,102,252,0.07); padding:24px 18px; display:flex; align-items:center; justify-content:center; text-align:center; border-right:1px solid rgba(243,102,252,0.2);">
-          <div><p style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; color:#F366FC; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 8px;">Case C</p><p style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; color:#F6F6F6; margin:0;">Jessica S.</p></div>
-        </div>
-        <div style="padding:24px 28px; background:rgba(255,255,255,0.018);"><p style="font-size:15px; color:rgba(246,246,246,0.82); line-height:1.72; margin:0;">Optimized executive transformation offer scaled from $11,000/mo baseline to $55,000/mo in 6 months (<strong style="color:#F366FC; font-weight:600;">5.0x growth multiplier</strong>).</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 10 · QUESTIONS & DISCUSSION -->
+  <!-- 13 QUESTIONS -->
   <section style="padding:88px 0 100px;">
-    <div class="sec-counter"><span class="sec-num">10</span><div class="sec-line"></div></div>
+    <div class="sec-counter"><span class="sec-num">13</span><div class="sec-line"></div></div>
     <h2>Questions &amp; Discussion</h2>
     <div style="background:radial-gradient(ellipse at 42% 50%,rgba(23,23,83,0.85) 0%,rgba(15,15,16,0.6) 70%); border:1px solid rgba(91,102,248,0.22); border-radius:14px; padding:72px 64px; text-align:center;">
       <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(18px,3vw,24px); font-weight:600; color:#F6F6F6; margin:0 0 28px; letter-spacing:-0.015em; line-height:1.3;">Thank you for your partnership and vision.</p>
